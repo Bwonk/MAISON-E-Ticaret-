@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "editorial_quotes",
+  "info": {
+    "singularName": "editorial-quote",
+    "pluralName": "editorial-quotes",
+    "displayName": "EditorialQuote"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "quote": {
+      "type": "text"
+    },
+    "attribution": {
+      "type": "text"
+    }
+  }
+}
