@@ -1,0 +1,250 @@
+/* ═══════════════════════════════════════════════════
+   GLOBAL DESIGN TOKENS — LORE-Inspired System
+   ═══════════════════════════════════════════════════ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── IVORY (Default) — Pure white, photography-first ── */
+:root,
+[data-theme="ivory"] {
+  --bg: #ffffff;
+  --bg-alt: #f7f7f5;
+  --bg-card: #ffffff;
+
+  --fg: #1a1a1a;
+  --fg-secondary: #555555;
+  --fg-muted: #999999;
+
+  --accent: #1a1a1a;
+  --accent-hover: #000000;
+  --accent-soft: rgba(26, 26, 26, 0.04);
+
+  --border: #e8e8e8;
+  --border-strong: #d0d0d0;
+
+  --selection-bg: rgba(0, 0, 0, 0.08);
+  --selection-fg: #1a1a1a;
+}
+
+/* ─── NOIR ────────────────────────────────────────── */
+[data-theme="noir"] {
+  --bg: #0c0c0c;
+  --bg-alt: #161616;
+  --bg-card: #1a1a1a;
+
+  --fg: #f0f0ee;
+  --fg-secondary: #a0a09c;
+  --fg-muted: #666662;
+
+  --accent: #f0f0ee;
+  --accent-hover: #ffffff;
+  --accent-soft: rgba(240, 240, 238, 0.06);
+
+  --border: #252525;
+  --border-strong: #3a3a3a;
+
+  --selection-bg: rgba(255, 255, 255, 0.12);
+  --selection-fg: #f0f0ee;
+}
+
+/* ─── SAGE ────────────────────────────────────────── */
+[data-theme="sage"] {
+  --bg: #f2f4ef;
+  --bg-alt: #e8ebe3;
+  --bg-card: #f7f9f4;
+
+  --fg: #2c302a;
+  --fg-secondary: #5a5f56;
+  --fg-muted: #8a8f86;
+
+  --accent: #2c302a;
+  --accent-hover: #1a1d18;
+  --accent-soft: rgba(44, 48, 42, 0.05);
+
+  --border: #dde0d8;
+  --border-strong: #c4c8be;
+
+  --selection-bg: rgba(44, 48, 42, 0.1);
+  --selection-fg: #2c302a;
+}
+
+/* ─── SHARED TOKENS ───────────────────────────────── */
+:root {
+  --font-display: "DM Sans", sans-serif;
+  --font-body: "Inter", "Helvetica Neue", "Arial", sans-serif;
+
+  --text-xs: 0.6875rem;    /* 11px */
+  --text-sm: 0.8125rem;    /* 13px */
+  --text-base: 0.9375rem;  /* 15px */
+  --text-lg: 1.0625rem;    /* 17px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.75rem;     /* 28px */
+  --text-3xl: 2.25rem;     /* 36px */
+  --text-4xl: 3.25rem;     /* 52px */
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  --ease-soft: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 600ms;
+
+  --nav-height: 3.5rem;
+  --max-width: 1320px;
+  --grid-gap: 2rem;
+}
+
+/* ═══════════════════════════════════════════════════
+   BASE RESET
+   ═══════════════════════════════════════════════════ */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    font-weight: 300;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    color: var(--fg);
+    background-color: var(--bg);
+    transition:
+      color var(--duration-base) var(--ease-soft),
+      background-color var(--duration-base) var(--ease-soft);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--fg);
+    text-wrap: balance;
+  }
+
+  h1 { font-size: var(--text-4xl); }
+  h2 { font-size: var(--text-3xl); }
+  h3 { font-size: var(--text-2xl); }
+  h4 { font-size: var(--text-xl); }
+
+  p {
+    max-width: 65ch;
+    text-wrap: pretty;
+  }
+
+  a {
+    color: var(--fg);
+    text-decoration: none;
+    transition: opacity var(--duration-fast) var(--ease-soft);
+  }
+
+  a:hover {
+    opacity: 0.6;
+  }
+
+  ::selection {
+    background-color: var(--selection-bg);
+    color: var(--selection-fg);
+  }
+
+  :focus-visible {
+    outline: 1px solid var(--fg);
+    outline-offset: 3px;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  img, video, svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  button {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  ul, ol {
+    list-style: none;
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  [data-theme] {
+    transition:
+      color var(--duration-base) var(--ease-soft),
+      background-color var(--duration-base) var(--ease-soft);
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   UTILITIES
+   ═══════════════════════════════════════════════════ */
+
+@layer utilities {
+  .editorial-container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin-inline: auto;
+    padding-inline: var(--space-8);
+  }
+}
+
+/* ─── Scrollbar ───────────────────────────────────── */
+@layer base {
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--fg-muted);
+  }
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-strong) transparent;
+  }
+}
