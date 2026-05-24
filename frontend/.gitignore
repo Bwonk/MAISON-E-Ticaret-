@@ -23,13 +23,7 @@ npm-debug.log*
 *.njsproj
 *.sln
 *.sw?
-
-# OS
 .DS_Store
 Thumbs.db
-
-# TypeScript
 *.tsbuildinfo
-
-# Claude Code
 .claude/
